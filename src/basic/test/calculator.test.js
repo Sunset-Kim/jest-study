@@ -1,4 +1,4 @@
-const Calculator = require("../basic/calculator/calculator");
+const Calculator = require("../../basic/calculator/calculator");
 
 describe("계산기 테스트코드", () => {
   let 계산기;
