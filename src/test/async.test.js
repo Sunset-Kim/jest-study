@@ -1,4 +1,4 @@
-const fetch = require("../async/async");
+const fetch = require("../basic/async/async");
 
 describe("asnyc", () => {
   // done - 5002ms
