@@ -1,3 +1,8 @@
+// Mock(진짜처럼 흉내) 나쁜예제
+// 1. mock 함수를 임의로 만듦
+// 2. client 도 mocking 함
+// 3. DI 구현 미흡
+
 const TodoClient = require("../todo_client");
 const TodoService = require("../todo_services");
 
@@ -40,7 +45,7 @@ describe("todo service test", () => {
   });
 
   beforeEach(() => {
-    todoService = new TodoService(new TodoClient());
+    todoService = new TodoService();
   });
 
   it("fetch Completed todos", async () => {
