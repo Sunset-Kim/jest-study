@@ -1,58 +1,37 @@
 const Stack = require("../stack");
 
 // 스택 시작
-describe("Stack Input Test", () => {
+describe("Stack size", () => {
   let stack;
 
-  it("stack valid Init", () => {
-    stack = new Stack([1, 2]);
-    expect(stack.stack).toEqual([1, 2]);
-  });
-
-  it("stack no Input", () => {
+  beforeEach(() => {
     stack = new Stack();
-    expect(stack.stack).toEqual([]);
   });
 
-  it("stack invalid Input", () => {
-    expect(() => {
-      stack = new Stack({});
-    }).toThrow();
+  it("stack 비었을때", () => {
+    expect(stack.size()).toBe(0);
+    expect(() => stack.pop()).toThrow();
+    stack.push(1);
+    expect(stack.size()).toBe(1);
+    expect(stack.pop()).toEqual(1);
   });
 });
 
-// 스택 팝
-describe("Stack Pop Test", () => {
+describe("Stack Peek", () => {
   let stack;
 
   beforeEach(() => {
-    stack = new Stack([1]);
+    stack = new Stack();
   });
 
-  it("Pop - 요소가 있을때", () => {
-    expect(stack.pop()).toEqual(1);
-    expect(stack.stack).toEqual([]);
-  });
-
-  it("Pop - 요소가 없을때", () => {
-    expect(stack.pop()).toEqual(1);
-    expect(stack.pop()).toEqual(undefined);
-    expect(stack.stack).toEqual([]);
-  });
-});
-
-describe("Stack Push", () => {
-  let stack;
-
-  beforeEach(() => {
-    stack = new Stack([1]);
+  it("Peek - 요소가 없을 때", () => {
+    expect(() => stack.peek()).toThrow();
   });
 
   it("Push - 요소가 있을때", () => {
     stack.push(1);
-    expect(stack.stack).toEqual([1, 1]);
-
-    stack.push([1, 2]);
-    expect(stack.stack).toEqual([1, 1, [1, 2]]);
+    stack.peek();
+    expect(stack.peek()).toBe(1);
+    expect(stack.size()).toBe(1);
   });
 });
