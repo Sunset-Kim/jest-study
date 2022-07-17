@@ -45,7 +45,7 @@ describe("todo service test", () => {
   });
 
   beforeEach(() => {
-    todoService = new TodoService(new TodoClient());
+    todoService = new TodoService();
   });
 
   it("fetch Completed todos", async () => {
