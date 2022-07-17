@@ -5,7 +5,7 @@ class LoginService {
     this.token = undefined;
   }
 
-  login(email, password) {
+  async login(email, password) {
     if (!this.isLoggedIn) {
       this.LoginClient.login(email, password).then((data) => {
         this.token = data.token;

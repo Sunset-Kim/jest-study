@@ -9,3 +9,5 @@ class LoginClient {
     }).then((res) => res.json());
   }
 }
+
+module.exports = LoginClient;
