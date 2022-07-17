@@ -1,28 +1,41 @@
 class Stack {
   constructor() {
-    this.stack = [];
+    this._size = 0;
+    this.head = null;
   }
 
   size() {
-    return this.stack.length;
-  }
-
-  pop() {
-    if (this.stack.length === 0) {
-      throw new Error("stack is empty");
-    }
-    return this.stack.splice(this.stack.length - 1, 1)[0];
+    return this._size;
   }
 
   push(value) {
-    this.stack[this.stack.length] = value;
+    const node = {
+      value,
+      next: this.head,
+    };
+
+    this.head = node;
+    this._size += 1;
+  }
+
+  pop() {
+    if (this._size === 0) {
+      throw new Error("Stack is empty");
+    }
+    const popItem = this.head;
+
+    this.head = this.head.next;
+    this._size -= 1;
+
+    return popItem.value;
   }
 
   peek() {
-    if (this.stack.length <= 0) {
-      throw new Error("stack is empty");
+    if (this._size === 0) {
+      throw new Error("Stack is empty");
     }
-    return this.stack[this.stack.length - 1];
+
+    return this.head?.value;
   }
 }
 
